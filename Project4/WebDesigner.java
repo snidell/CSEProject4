@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Compilation:  javac WebDesigner.java <br>
  *  Execution:    java WebDesigner <br>
+ *  Created By: Scott Nidell March 15th 2014
  *************************************************************************/
 
 import java.text.*;
