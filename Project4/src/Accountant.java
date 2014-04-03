@@ -26,7 +26,7 @@ public class Accountant extends SalariedEmp{
   }
   
   /**
-  * Overrides abvstract method in SalariedEmployee to calculate salary
+  * Overrides abstract method in SalariedEmployee to calculate salary
   * 
   * @return age of current person       
   */
