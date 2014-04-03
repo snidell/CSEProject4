@@ -126,7 +126,7 @@ public class Customer extends Person{
    Customer cust1= new Customer(47,"Scott","Nidell",date1,"male","5316 Stephanie Drive","Texas","76117");
    System.out.println(cust1);
    
-   Date date2= new Date(11,3,1988);
+   
    //Person p1= new Person("Sookie","Stackhouse","Female",date2); //should error out can instantiate abstract class
    //System.out.println(p1);
  }
