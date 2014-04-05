@@ -332,7 +332,7 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
                 //code added
                 DateTime bidTime= new DateTime(bidDateTime);
                 Bid bid= new Bid(buserId,bitemId,bidTime,bidAmount,bidQty);                
-                //add bid checks for valididty
+                //add bid checks for validity
                 myEnt.addBid(bid);
                 //prints current bids on item so far
                 myEnt.printBids(bitemId,foutput);

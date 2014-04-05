@@ -638,6 +638,10 @@ public void getRevenue(int year, String type,PrintWriter foutput){
         }                
       }    
   }
+  
+  public String getName(){
+	  return name;
+  }
                          
   /**
   * A String method that represents a Enterprise Object
