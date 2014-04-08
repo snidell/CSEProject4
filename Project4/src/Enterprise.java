@@ -136,7 +136,7 @@ public class Enterprise implements Proj3Constants, DateConstants{
   */
  public void printLenghtOfService(SalariedEmp e, PrintWriter foutput){
    foutput.println("------Newly Added Employee----------");
-   foutput.println(e+" Age: "+e.age()+" Length of Service "+e.lengthOfService());
+   foutput.println(e+" Age: "+e.age()+" Length of Service (In Years) "+e.lengthOfService());
    foutput.println("\n");
  }
  
@@ -296,7 +296,7 @@ public class Enterprise implements Proj3Constants, DateConstants{
  
 /**
   * Checks if an item was sold
-  * if sold it moves item to itemsSold arraylist
+  * if sold it moves item to itemsSold ArrayList
   * 
   
   */
@@ -307,7 +307,7 @@ public void checkSold() {
 //loop through items
   for(int i=0; i<items.size(); i++) {
     
-   //if there is are no bids in item
+   //if there are no bids in item
     if(items.get(i).getBids().size() != 0){ 
       
     if("FIXED".equals(items.get(i).getType().toUpperCase())) { //if type is fixed
@@ -315,7 +315,7 @@ public void checkSold() {
      if(items.get(i).getLastBid().getAmount() >= items.get(i).getReserve()) {       
        //get amount of last bid and see if it is more than reserve amount
       if(items.get(i).getQuantity() >= items.get(i).getLastBid().getQuantity()) {
-        //if the quanity is greater than or equal to quanity of last bid
+        //if the quantity is greater than or equal to quantity of last bid
         
        totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());       
        items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());       
@@ -385,7 +385,7 @@ public void getRevenue(int year, String type,PrintWriter foutput){
   String num = dollars.format(revenue);
   revenue = 0;
   
-  if(type.equals("*")) {
+  if(type.equals("*")) { //if both
    for(int i=0; i<soldItems.size(); i++){
     if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
       revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
@@ -401,7 +401,9 @@ public void getRevenue(int year, String type,PrintWriter foutput){
     foutput.println("----------Fixed Items Sold-------------");
    for(int i=0; i<soldItems.size(); i++){
     if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
-      revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
+        System.out.println("Insertion Fee"+soldItems.get(i).getInsertionFee()+" finalValueFee "+soldItems.get(i).getFinalValueFee());
+    	revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
+    	System.out.println("Revenue: "+revenue);
     }
    }
    for(int i=0; i<soldItems.size(); i++){

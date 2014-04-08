@@ -341,7 +341,7 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
               
                 int rempID= Integer.parseInt(chopMenuLine[ONEI]);
                 String termDate = chopMenuLine[TWOI];
-                //Release empployee
+                //Release employee
                 myEnt.releaseEmployee(rempID, termDate);                
                 //print current employees
                 myEnt.printEmployees(foutput);

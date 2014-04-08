@@ -35,7 +35,7 @@ public class Bid implements Proj3Constants,DateConstants{
   * @param iID         Item id that the bid belongs to
   * @param bidDate     Date the bid was placed
   * @param bidAmt      Amount the bid will be placed for
-  * @param qty         Quanity of items to be bid on
+  * @param qty         Quantity of items to be bid on
   * @exception RuntimeException
   *                if the date is invalid
   */
@@ -131,7 +131,7 @@ public class Bid implements Proj3Constants,DateConstants{
   public static void main(String []args){
     
   /********Various test cases******/
-    int userID1=011;
+  int userID1=011;
   int itemID1=100;
   DateTime bidDate1= new DateTime("2-12-2014,00:00:45");
   double bidAmount1=200.00;
