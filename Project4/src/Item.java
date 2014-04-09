@@ -44,6 +44,8 @@ public class Item implements Proj3Constants,DateConstants{
   private double insertionFee=0;//keeps track of insertion fee for item
   private double costCollected;//Keeps track of total cost insert+final value fee
   private NumberFormat dollars= NumberFormat.getCurrencyInstance(Locale.US);
+  private boolean saleFinal=false;
+  private double customerReturn=0;
   
   /**
   * Constructor: Default constructor that builds a Item
@@ -109,6 +111,7 @@ public class Item implements Proj3Constants,DateConstants{
     this.endDate=new DateTime(sd);
     this.endDate.addDays(nd);
     costCollected= .01*minStart;//This calculates the insertion fee
+    insertionFee= .01*minStart;//This calculates the insertion fee
   }
   
   /**
@@ -178,29 +181,7 @@ public class Item implements Proj3Constants,DateConstants{
     this.qty=q;    
   }
   
-  /**
-  * Increase feedback of Item
-  * 
-  * @param fb amount of rating to be increased
-  *                
-  */
-  public void increaseFeedback(int fb){
-    
-    this.feedback+=fb;  
-  }
-  
-  /**
-  * Decrease feedback of Item
-  * 
-  * @param fb amount of rating to be decreased
-  *                
-  */
-  
-  public void decreaseFeedback(int fb){
-    
-    this.feedback-=fb;    
-  }
-  
+   
   /**
   * Returns the Quantity sold of this Item
   *
@@ -210,6 +191,16 @@ public class Item implements Proj3Constants,DateConstants{
   public int getQtySold(){
     
    return qtySold; 
+  }
+  
+  /**
+   *
+   *adds quantity sold
+   *@param numSold
+   *
+   */
+  public void addQtySold(int numSold){
+	  qtySold+=numSold;
   }
   
   /**
@@ -332,107 +323,136 @@ public class Item implements Proj3Constants,DateConstants{
   * @param b Bid object being validated
   * @return true DateTime,QTY,and TYPE correct
   */
-  public  boolean isValid(Bid b){
-    int lastIndex=this.bids.size()-ONEI;
+  public  boolean isValid(Bid b){    
     
     //if bid QTY is not less than QTY available 
-    //System.out.println("bids QTY< this.qty?"+(b.getBidQty()<this.qty));
-    if(!(b.getBidQty()<this.qty)){    	
+    if(!(b.getBidQty()<this.qty+1)){    	
     	System.out.println("Invalid bid quanity given "+b.getBidQty()+" available: "+this.qty);
     	return false;
-    }
-    
+    }    
     //then check to see if the date is within the start and end date 
     if(!(b.getBidDate().isBefore(this.endDate)&& b.getBidDate().isAfter(this.startD))){	       	 
 	    System.out.println("Date not in range");
 	    return false;        
-	}
-    
-    //if the bidAmount is not greater than or equal to the reserve 
-	if(!(b.getBidAmount()>=this.reserveAmount)){
-	    System.out.println("Reserve not met. Invalid bid given: "+b.getBidAmount()+this.reserveAmount);
-	    return false;	    	  
-	}    	 
+	}        	 
     
     if(this.type==SaleType.FIX_PRICE){
-    	//System.out.println("In Fix Price");
-       return this.validFixed(b);
+    	return this.validFixed(b);
     }else if(this.type==SaleType.AUCTION){
-    	
+    	return this.validAuction(b);
     }else if(this.type==SaleType.BOTH){
-    	
+    	return this.validBoth(b);
     }
     System.out.println("Not valid bid Type");
     return false;
-    /*
-    if(this.bids.size()==ZEROI){//if this is the first bid going in
-      if(b.getBidDate().isBefore(this.endDate)&& b.getBidDate().isAfter(this.startD)){
-        //then check to see if the date is within the start and end date    	 
-        return true;        
-      }
-    }else if(this.bids.size()>=ONEI){//if there is at least one active bid
-      if(b.getBidDate().isAfter(this.bids.get(lastIndex).getBidDate()) && b.getBidDate().isBefore(this.endDate)){
-        //check to see if the date is after last bid
-    	  //This is not true for a FIXED auction.----------------------
-    	  System.out.println("Bid Date out of Range 2"+b.getBidDate());
-        return true;
-      }else{
-         return false; 
-        }
-    }
-      
-    if(this.type==SaleType.FIX_PRICE){
-    	//if bid amount is equal to reserve and bid QTY is less than avail 
-      if(b.getBidAmount()==this.reserveAmount && b.getBidQty()<=this.qty){   
-        this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
-        this.qtySold=b.getBidQty(); //add to sold itemsQty        
-        return true;
-      }else{
-        System.out.println("Invalid price or bid qty for FIXED item");
-      }
-    }else if(this.type==SaleType.AUCTION){ //if auction type
-      if(this.bids.size()==ZEROI && b.getBidAmount()>=this.minStart){//if this is the first bid&its higher than min bid
-        return true;
-      }else if(this.bids.size()>ZEROI && b.getBidAmount()>=(this.bids.get(lastIndex).getBidAmount())+this.increment){
-        //If bids>0 and new bid amount is higher than last bid +increment
-        return true;
-      }else{
-       System.out.println("Invalid price for Auction item"); 
-      }      
-    }else if(this.type==SaleType.BOTH){//has attributes of fixed and auction type
-      if(b.getBidAmount()==this.reserveAmount && b.getBidQty()<=this.qty){        
-        this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
-        this.qtySold=b.getBidQty();         
-        return true;
-      }else if(this.bids.size()==ZEROI && b.getBidAmount()>=this.minStart){//if this is the first bid&its higher than min bid
-        return true;
-      }else if(this.bids.size()>ZEROI && b.getBidAmount()>=(this.bids.get(lastIndex).getBidAmount())+this.increment){
-        //If bids>0 and new bid amount is higher than last bid +increment
-        return true;
-      }else{        
-        System.out.println("Invalid price for Both item"); 
-      }
-      
-    }else{     
-      System.out.println("Invalid Type");
-    } 
-    System.out.println("Blarf");
-    return false;  */  
+    
   }
   /**
+   * 
+   * @param b Bid being validated
+   * @return boolean true if valid both bid
+   * 
+   */
+  private boolean validBoth(Bid b){
+	  int lastIndex=this.bids.size()-ONEI;
+	  
+	  
+	  if(bids.size()==ZEROI){
+		  //if the new bid amount is greater than or equal to minStart
+		  if(b.getAmount()>=this.reserveAmount){
+			  this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
+			  this.qtySold=b.getBidQty(); //add to sold itemsQty
+			  //Calculate cost collected if bid is valid item is sold immediately
+			  costCollected+= (.1*b.getBidAmount());
+			  return true;
+		  }
+		  if(!(b.getAmount()>=minStart)){
+			  System.out.println("Bid does not meet minimum bid ");
+			  return false;
+		  }else{
+			  return true;
+		  }
+		  
+	  }
+	  
+	      //There is a valid bid in bids array
+	      //amount is greater than or equal to the reserve
+		  if(b.getAmount()>=this.reserveAmount){
+			  this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
+			  this.qtySold=b.getBidQty(); //add to sold itemsQty
+			  //Calculate cost collected if bid is valid item is sold immediately
+			  costCollected+= (.1*b.getBidAmount());
+			  return true;
+		  }else if(!(b.getAmount()>=bids.get(lastIndex).getAmount())){
+			  System.out.println("Bid is not greater than previous bid");
+			  return false;
+		  }else if(!(b.getBidDate().isAfter(this.bids.get(lastIndex).getBidDate()))){
+			  System.out.println("Bid date being added is before last valid bid");
+			  return false;
+		  }else{
+			  return true;
+			  //calc to total cost is done later with time involved
+			  //does it meet reserve before time
+		  }		  
+	  
+	  
+	 
+  }
+  /**
+   * Checks for valid AUCTION type
+   *  
+   * @param b bid being validated
+   * @return true if valid auction item
+   */
+  private boolean validAuction(Bid b){
+	  int lastIndex=this.bids.size()-ONEI;
+	 
+	  //if there are no bids
+	  //System.out.println("size==ZERO? "+(bids.size()==ZEROI)+" Size: "+bids.size());
+	  if(bids.size()==ZEROI){
+		  //if the new bid amount is greater than or equal to minStart
+		  if(!(b.getAmount()>=minStart)){
+			  System.out.println("Bid does not meet minimum bid ");
+			  return false;
+		  }else{
+			  return true;
+		  }
+		  
+	  }else{//there is a current valid bid for item
+		  //check if current bid amount is greater than last bid
+		  if(!(b.getAmount()>=bids.get(lastIndex).getAmount())){
+			  System.out.println("Bid is not greater than previous bid");
+			  return false;
+		  }else if(!(b.getBidDate().isAfter(this.bids.get(lastIndex).getBidDate()))){
+			  System.out.println("Bid date being added is before last valid bid");
+			  return false;
+		  }else{
+			  return true;
+			  //calc to total cost is done later with time involved
+			  //does it meet reserve before time
+		  }		  
+	  }
+}
+
+/**
    * Checks a for valid FIXED bid
    * @param b Current bid under validation
    * 
    * @return boolean false if not valid true if valid
    */
-  public boolean validFixed(Bid b){   	  
+  private boolean validFixed(Bid b){   	  
 	   
-	   this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
-	   this.qtySold=b.getBidQty(); //add to sold itemsQty
-	   //Calculate cost collected if bid is valid item is sold immediately
-	   costCollected+= (.1*b.getBidAmount());
-	   return true;
-	  	  
+	//if the bidAmount is not greater than or equal to the reserve 
+	if(!(b.getBidAmount()>=this.reserveAmount)){
+	  System.out.println("Reserve not met. Invalid bid given: "+b.getBidAmount()+this.reserveAmount);
+	  return false;	    	  
+	} 
+	  this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
+	  this.qtySold=b.getBidQty(); //add to sold itemsQty
+	  //Calculate cost collected if bid is valid item is sold immediately
+	  costCollected+= (.1*b.getBidAmount());
+	  customerReturn+= (b.getBidQty()*b.getBidAmount());//update customer revenue
+	  return true;	  	  
   }
  
   
@@ -449,6 +469,18 @@ public class Item implements Proj3Constants,DateConstants{
      foutput.println("   "+bids.get(i));
     }
   }
+  /**
+   * Prints all bids in the Current Item
+   * 
+   */
+   public void printBid(){
+    
+     System.out.println("ItemID: "+this.itemID+"|Description: "+this.description);
+     System.out.println("   CurrentBids:");
+     for(int i=0;i<bids.size();i++){
+    	 System.out.println("   "+bids.get(i));
+     }
+   }
   
   /**
   * Returns the ReserveAmount
@@ -464,8 +496,8 @@ public class Item implements Proj3Constants,DateConstants{
   *
   * @return String representation of End Date
   */
-  public String getEndDate(){
-    return this.endDate.toString();
+  public DateTime getEndDate(){
+    return this.endDate;
   }
   
   /**
@@ -539,27 +571,63 @@ public class Item implements Proj3Constants,DateConstants{
    * return double cost collected so far
    * 
    */
-  public String getCostCollected(){
-	  String dollarCost=dollars.format(this.costCollected);	  
-	  return dollarCost; 
+  public double getCostCollected(){
+	    
+	  return this.costCollected; 
   }
-
   /**
+   * 
+   * @return cost collected for the item
+   * 
+   */
+  public double getValCostCollected(){
+	  return this.costCollected;	  
+  }
+  /**
+   * 
+   * Adds cost of final sale price from checkSold() method in enterprise
+   * 
+   * @return sets cost collected
+   */
+  
+  public void setCostCollected(double nCost){
+	  
+	  this.costCollected+=nCost;
+  }
+  
+  public boolean getSaleFinal(){  
+  
+	  return this.saleFinal;
+  }
+  /**
+   * Sets the saleFinal key
+   * 
+   * @param saleFinal new value of saleFinal
+   */
+public void setSaleFinal(Boolean saleFinal) {
+	this.saleFinal = saleFinal;
+}
+
+/**
   * Prints the current attributes of the object
   *   
   * @return string that describes the Item object.
   *                
   */
+public void setCustomerReturn(double cr){
+	
+	customerReturn+= cr;
+}
   public String toString(){
     
-    return "{ID: "+this.itemID+"| Name: "+this.name+"| Description: "+this.description+"| QTY: "
-      +this.qty+"|Condition: "+this.condition+" Auction TYPE: "+this.type+"|Min Start: "+this.minStart+"|Seller Feedback: "+this.feedback;   
+    return "SellerID "+this.sellerID+"{ID: "+this.itemID+"| Name: "+this.name+"| Description: "+this.description+"| QTY: "
+      +this.qty+"|Condition: "+this.condition+" Auction TYPE: "+this.type+"|Min Start: "+this.minStart+"|Seller Feedback: "+this.feedback+"|StartDate: "+this.startD;   
   }
   
   public static void main(String []args){
     
     
-       
+     /*  
     //Testing bids FIXED Auction
     int itemID= 003;
     String itemCat= "Antique";
@@ -570,7 +638,7 @@ public class Item implements Proj3Constants,DateConstants{
     double minStart= 30.00;
     double bidInc= 5.00;
     double reserveAmt= 400.00;
-    String startD= "2-6-2014,21:49:00"; //Jan1-2014 9:49pm
+    String startD= "2-6-2014,21:49:00"; //Feb2-2014 9:49pm
     int days= 7;
     int sellerID= 200;
     int feedback=1000;
@@ -579,8 +647,10 @@ public class Item implements Proj3Constants,DateConstants{
     Item myItem3= new Item(itemID,itemCat,itName,itemType,itemQty,condition,minStart,bidInc,reserveAmt,startD,days,sellerID,feedback,desc);
     
     System.out.println(myItem3);
+    */
     /*****Adding FIXED bids to item*/////
     //Adding bid info
+	  /*
     int userID1=011;
     int itemID1=003;
     DateTime bidDate1= new DateTime("2-12-2014,00:00:45");//Feb12-2014 midnight+45mins
@@ -623,11 +693,12 @@ public class Item implements Proj3Constants,DateConstants{
     myItem3.addBid(bid4);
     System.out.println("Cost: "+myItem3.getCostCollected());
     
+    System.out.println("*******TESTING AUCTION******* \n\n");
     
-    
+    */
     /*****Adding Auction Bids to item*/////
-  //Testing bids FIXED Auction
-    int itemID02= 003;
+	  /*
+    int itemID02= 004;
     String itemCat2= "Antique";
     String itName2="Camera";
     String itemType2= "AUCTION";
@@ -636,37 +707,37 @@ public class Item implements Proj3Constants,DateConstants{
     double minStart2= 30.00;
     double bidInc2= 5.00;
     double reserveAmt2= 400.00;
-    String startD2= "2-6-2014,21:49:00"; //Jan1-2014 9:49pm
+    String startD2= "2-6-2014,21:49:00"; //Feb6-2014 9:49pm
     int days2= 7;
     int sellerID2= 200;
     int feedback2=1000;
     String desc2= "Old Ass Camera"; 
     
-    Item myItem4= new Item(itemID,itemCat,itName,itemType,itemQty,condition,minStart,bidInc,reserveAmt,startD,days,sellerID,feedback,desc);
+    Item myItem4= new Item(itemID02,itemCat2,itName2,itemType2,itemQty2,condition2,minStart2,bidInc2,reserveAmt2,startD2,days2,sellerID2,feedback2,desc2);
     //Adding bid info
     int userID5=011;
-    int itemID5=003;
+    int itemID5=004;
     DateTime bidDate5= new DateTime("2-12-2014,00:00:45");//Feb12-2014 midnight+45mins
-    double bidAmount5=200.00;//too low of a bid
+    double bidAmount5=20.00;//Doesn't meet minStart
     int bidQTY5= 3;
     
     int userID6=011;
-    int itemID6=003;
-    DateTime bidDate6= new DateTime("2-11-2014,13:45:00");//Feb13-2014 1:45
-    double bidAmount6=400.00;//first valid bid--new avail qty is 2
+    int itemID6=004;
+    DateTime bidDate6= new DateTime("2-11-2014,13:45:00");//Feb11-2014 1:45
+    double bidAmount6=220.00;//first valid bid
     int bidQTY6= 3;
     
     int userID7=011;
-    int itemID7=003;;
-    DateTime bidDate7= new DateTime("2-11-2014,11:00:00");//Feb-11-2014 11am
+    int itemID7=004;
+    DateTime bidDate7= new DateTime("2-11-2014,11:00:00");//Feb-11-2014 11am //Time before last valid bid invalid
     double bidAmount7=400.00;
     int bidQTY7= 1; //second valid bid-- new avail qty is 1
     
     int userID8=011;
-    int itemID8=003;
+    int itemID8=004;
     DateTime bidDate8= new DateTime("2-11-2014,14:00:00");//Feb-11-2014 2pm
     double bidAmount8=233.00;
-    int bidQTY8= 9;//too many
+    int bidQTY8= 1;//too many
     
     Bid bid5= new Bid(userID5,itemID5,bidDate5,bidAmount5,bidQTY5);
     Bid bid6= new Bid(userID6,itemID6,bidDate6,bidAmount6,bidQTY6);
@@ -675,16 +746,83 @@ public class Item implements Proj3Constants,DateConstants{
     
     System.out.println("Adding bid 1");
     myItem4.addBid(bid5);
-    System.out.println("Cost: "+myItem4.getCostCollected());
+    myItem4.printBid();
     System.out.println("Adding bid 2");
     myItem4.addBid(bid6);
-    System.out.println("Cost: "+myItem4.getCostCollected());
+    myItem4.printBid();
     System.out.println("Adding bid 3");
     myItem4.addBid(bid7);
-    System.out.println("Cost: "+myItem4.getCostCollected());
+    myItem4.printBid();
     System.out.println("Adding bid 4");
     myItem4.addBid(bid8);
-    System.out.println("Cost: "+myItem4.getCostCollected());
+    myItem4.printBid();*/
+    
+    System.out.println("\n\n ******Adding BOTH bid******");
+    
+    /*****Adding BOTH Bids to item*/////
+    int itemID03= 004;
+    String itemCat3= "Antique";
+    String itName3="Camera";
+    String itemType3= "BOTH";
+    int itemQty3= 5;
+    String condition3= "USED";
+    double minStart3= 30.00;
+    double bidInc3= 5.00;
+    double reserveAmt3= 400.00;
+    String startD3= "2-6-2014,21:49:00"; //Feb6-2014 9:49pm
+    int days3= 7;
+    int sellerID3= 200;
+    int feedback3=1000;
+    String desc3= "Old Ass Camera"; 
+    
+    Item myItem5= new Item(itemID03,itemCat3,itName3,itemType3,itemQty3,condition3,minStart3,bidInc3,reserveAmt3,startD3,days3,sellerID3,feedback3,desc3);
+    //Adding bid info
+    int userID9=011;
+    int itemID9=004;
+    DateTime bidDate9= new DateTime("2-12-2014,00:00:45");//Feb12-2014 midnight+45mins
+    double bidAmount9=20.00;//Doesn't meet minStart
+    int bidQTY9= 3;
+    
+    int userID10=011;
+    int itemID10=004;
+    DateTime bidDate10= new DateTime("2-11-2014,13:45:00");//Feb11-2014 1:45
+    double bidAmount10=220.00;//first valid bid
+    int bidQTY10= 3;
+    
+    int userID11=011;
+    int itemID11=004;
+    DateTime bidDate11= new DateTime("2-11-2014,11:00:00");//Feb-11-2014 11am //Time before last valid bid invalid
+    double bidAmount11=400.00;
+    int bidQTY11= 1; //second valid bid-- new avail qty is 1
+    
+    int userID12=011;
+    int itemID12=004;
+    DateTime bidDate12= new DateTime("2-11-2014,14:00:00");//Feb-11-2014 2pm
+    double bidAmount12=233.00;
+    int bidQTY12= 1;//too many
+    
+    Bid bid9= new Bid(userID9,itemID9,bidDate9,bidAmount9,bidQTY9);
+    Bid bid10= new Bid(userID10,itemID10,bidDate10,bidAmount10,bidQTY10);
+    Bid bid11= new Bid(userID11,itemID11,bidDate11,bidAmount11,bidQTY11);
+    Bid bid12= new Bid(userID12,itemID12,bidDate12,bidAmount12,bidQTY12);
+    
+    System.out.println("Cost: "+myItem5.getCostCollected());
+    System.out.println("Adding bid 9");
+    myItem5.addBid(bid9);
+    System.out.println("Cost: after bid 9 "+myItem5.getCostCollected());
+    myItem5.printBid();
+    System.out.println("Adding bid 10");
+    myItem5.addBid(bid10);
+    System.out.println("Cost: after bid 10 "+myItem5.getCostCollected());
+    myItem5.printBid();
+    System.out.println("Adding bid 11");
+    myItem5.addBid(bid11);
+    System.out.println("Cost: after bid 11"+myItem5.getCostCollected());
+    myItem5.printBid();
+    System.out.println("Adding bid 12");
+    myItem5.addBid(bid12);
+    System.out.println("Cost: after bid 12"+myItem5.getCostCollected());
+    myItem5.printBid();
     
   }
   

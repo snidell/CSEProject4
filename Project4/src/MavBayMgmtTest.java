@@ -368,13 +368,15 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
                 int bidYear = Integer.parseInt(chopMenuLine[TWOI]);
                 myEnt.checkSold();
                 myEnt.getRevenue(bidYear,aType,foutput);
+                
                     break;
             case 19: // generate seller report
                 int sid = Integer.parseInt(chopMenuLine[ONEI]);//sellerID
                 int syear = Integer.parseInt(chopMenuLine[TWOI]);//Year
-                myEnt.soldItemsBySeller(syear,sid,foutput);
+                myEnt.soldItemsBySeller(syear,sid,foutput);//TODO
                     break;
             case 0: //process exit
+              myEnt.printItemsSold();
               System.out.println("Exiting System"); 
               System.exit(CLEAN_EXIT);
                     break;

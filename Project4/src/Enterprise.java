@@ -16,7 +16,6 @@ import java.io.*;
 import java.math.*;
 import java.text.*;
 import java.util.*;
-import java.util.Scanner;
 public class Enterprise implements Proj3Constants, DateConstants{
   
  private String name; //name of enterprise
@@ -197,6 +196,15 @@ public class Enterprise implements Proj3Constants, DateConstants{
    for(int i=0;i<items.size();i++)    
      System.out.println(items.get(i));
    }
+ /**
+  * Prints all Items of the Enterprise
+  * 
+  */
+ public void printItemsSold(){
+   System.out.println(" Size of Sold Item: "+soldItems.size());
+   for(int i=0;i<soldItems.size();i++)    
+     System.out.println(soldItems.get(i));
+   }
  
  /**
   * Prints all items given a lower bound range cost amount
@@ -297,80 +305,48 @@ public class Enterprise implements Proj3Constants, DateConstants{
 /**
   * Checks if an item was sold
   * if sold it moves item to itemsSold ArrayList
-  * 
+  * //FIXED items calculation are done just need to put item into sold array
+	  if(items.get(i).getType().toUpperCase().equals(FIXED1)){
+		  if(items.get(i).getQtySold()>0){
+			  items.get(i).setSaleFinal(true);
+			  soldItems.add(items.get(i));
+		  } 
+	  }
   
-  */
+  */// 
  
 public void checkSold() {
-  
-  
-//loop through items
+	DateTime today= new DateTime();
+  //loop through items
   for(int i=0; i<items.size(); i++) {
-    
-   //if there are no bids in item
-    if(items.get(i).getBids().size() != 0){ 
-      
-    if("FIXED".equals(items.get(i).getType().toUpperCase())) { //if type is fixed
-      
-     if(items.get(i).getLastBid().getAmount() >= items.get(i).getReserve()) {       
-       //get amount of last bid and see if it is more than reserve amount
-      if(items.get(i).getQuantity() >= items.get(i).getLastBid().getQuantity()) {
-        //if the quantity is greater than or equal to quantity of last bid
-        
-       totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());       
-       items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());       
-       totalItemsSold += items.get(i).getLastBid().getQuantity();       
-       soldItems.add(items.get(i));
+	  
+	  //cost is calculated at bid time for FIXED items so just check Both or Auction items
+	  if(items.get(i).getType().toUpperCase().equals(AUCTION)|| items.get(i).getType().toUpperCase().equals(BOTH_ITEM)){
+	  //If last bid is not 95percent or higher of the reserve and time is up ie. today is After the end date
+	      //if bids =zero than don't bother checking sold.
+		  if(!(items.get(i).getNumBids()==ZEROI)){
+		  if(!(items.get(i).getLastBid().getAmount()>=(.95*items.get(i).getReserve())) && today.isAfter(items.get(i).getEndDate())){
+	    	  //This sale lost its chance to be sold auction is set to final and auction is closed
+			  items.get(i).setSaleFinal(true);
+	      }
+		  //if the bid is greater than 95% of reserve AND today is After end of Auction AND the sale is not final yet
+		  if(items.get(i).getLastBid().getAmount()>=(.95*items.get(i).getReserve()) &&today.isAfter(items.get(i).getEndDate())&&!items.get(i).getSaleFinal() ){
+			  //now that the bids are valid take the finalCost amount to cost Collected
+			  items.get(i).setCostCollected(.1*items.get(i).getLastBid().getAmount());
+			  items.get(i).setSaleFinal(true);
+			  items.get(i).setQuanity((items.get(i).getQuantity()-items.get(i).getLastBid().getBidQty())); //set QuanityAvail=previousQTY-bidQTY
+			  items.get(i).addQtySold(items.get(i).getLastBid().getBidQty());//update QtySold
+			  items.get(i).setCustomerReturn(items.get(i).getQtySold()*items.get(i).getLastBid().getAmount());//update the customer profit.
+			  //move item to sold array
+			  soldItems.add(items.get(i));			  
+		  } 
+	  }
        
-      }
-      else {
-        
-       totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getQuantity());
-       items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getQuantity());
-       totalItemsSold += items.get(i).getQuantity();
-       soldItems.add(items.get(i));
-      }
-       
-     }
-    }
-    else if("BOTH".equals(items.get(i).getType())) {//if Both item
-     if(items.get(i).getLastBid().getAmount() >= items.get(i).getReserve()) {
-      if(items.get(i).getQuantity() >= items.get(i).getLastBid().getQuantity()) {
-       totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-       items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-       totalItemsSold += items.get(i).getLastBid().getQuantity();
-       soldItems.add(items.get(i));
-      }
-      else {
-       totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getQuantity());
-       items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getQuantity());
-       totalItemsSold += items.get(i).getQuantity();
-       soldItems.add(items.get(i));
-      }
-      
-     }
-    else {
-     if(items.get(i).getLastBid().getAmount() >= ((items.get(i).getReserve()) * .95)) {
-      totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-      items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-      totalItemsSold += items.get(i).getLastBid().getQuantity();
-      soldItems.add(items.get(i));
-     }
-    //else
-     //System.out.println("Bid: " + items.get(i).getLastBid() + " \nReserve Not Met");
-     }
-    }    
-    else if("AUCTION".equals(items.get(i).getType())) {//If it is an Auction item process this way
-     if(items.get(i).getLastBid().getAmount() >= ((items.get(i).getReserve()) * .95)) {
-      totalFees += (items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-      items.get(i).setFinalValueFee(items.get(i).getLastBid().getAmount() * items.get(i).getLastBid().getQuantity());
-      totalItemsSold += items.get(i).getLastBid().getQuantity();
-      soldItems.add(items.get(i));
-     }
-    //else
-     //System.out.println("Bid: " + items.get(i).getLastBid() + " \nReserve Not Met");
-    }
-    }
+	  }else if(items.get(i).getType().toUpperCase().equals(FIXED1)&& items.get(i).getQtySold()>0 && !items.get(i).getSaleFinal()){
+		  items.get(i).setSaleFinal(true);
+		  soldItems.add(items.get(i));
+	  }
+	  
     
    }
   
@@ -379,77 +355,108 @@ public void checkSold() {
 /**
   * gets revenue after the items have been checked
   *  
-  * @param foutput Printwriter to print to file
+  * @param foutput Print writer to print to file
   */
 public void getRevenue(int year, String type,PrintWriter foutput){
-  String num = dollars.format(revenue);
+  
   revenue = 0;
+  double dInsertion=0.00;
+  double dCostCollected=0.00;
   
-  if(type.equals("*")) { //if both
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
-      revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
-    }
-   }
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year)
-     foutput.println("All items sold: " + soldItems.get(i));
-   }
-   foutput.println("Revenue total for all items sold in the year " + year + ": " + num + "\n");
+  //if all sold items
+  if(type.equals("*")){
+	  foutput.println("---------ALL type Revenue---------");
+	  for(int i=0;i<soldItems.size();i++){		  
+		  //If the year is valid print that item.
+		  if((soldItems.get(i).getStartDate().getDate().getYear())==year){			  
+			  foutput.println("--------Revenue-------");
+			  //Format the output
+			  foutput.println(soldItems.get(i));
+			  dInsertion=soldItems.get(i).getInsertionFee();
+			  dCostCollected=soldItems.get(i).getCostCollected();
+			  String sInsertion = dollars.format(dInsertion);
+			  String sCostCollected=dollars.format(dCostCollected);
+			  //Print Output
+			  foutput.println("Insertion Fee "+sInsertion+ " totalCost "+sCostCollected);			  
+			  revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+			  String num = dollars.format(revenue);
+			  foutput.println("Revenue: "+num);
+		  }
+	  }
   }
-  else if(type.toUpperCase().equals("FIXED")) {
-    foutput.println("----------Fixed Items Sold-------------");
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
-        System.out.println("Insertion Fee"+soldItems.get(i).getInsertionFee()+" finalValueFee "+soldItems.get(i).getFinalValueFee());
-    	revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
-    	System.out.println("Revenue: "+revenue);
-    }
-   }
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year)
-     foutput.println("    " + soldItems.get(i));
-   }
-   foutput.println("Total revenue for fixed items sold in year " + year + ": " + num + "\n");
+  //if fixed sold items
+  if(type.toUpperCase().equals(FIXED1)){
+	  foutput.println("---------FIXED type Revenue---------");
+	  for(int i=0;i<soldItems.size();i++){
+		  //if it is the right year and a fixed product print it.
+		  if((soldItems.get(i).getStartDate().getDate().getYear())==year && soldItems.get(i).getType().toUpperCase().equals(FIXED1)){
+			  foutput.println("--------Revenue-------");
+			  //Format the output
+			  foutput.println(soldItems.get(i));
+			  dInsertion=soldItems.get(i).getInsertionFee();
+			  dCostCollected=soldItems.get(i).getCostCollected();
+			  String sInsertion = dollars.format(dInsertion);
+			  String sCostCollected=dollars.format(dCostCollected);
+			  //Print Output
+			  foutput.println("Insertion Fee "+sInsertion+ " totalCost "+sCostCollected);			  
+			  revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+			  String num = dollars.format(revenue);
+			  foutput.println("Revenue: "+num);
+		  }
+	  }
   }
-  else if(type.toUpperCase().equals("AUCTION")) {
-    foutput.println("----------Auction Items Sold-------------");
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
-      revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
-    }
-   }
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year)
-     foutput.println("    " + soldItems.get(i));
-   }
-   foutput.println("Total revenue for auction items sold in year " + year + ": " + num + "\n");
-  }
-  else if(type.toUpperCase().equals("BOTH")) {
-    foutput.println("----------Both Items Sold-------------");
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year) {
-      revenue += (soldItems.get(i).getInsertionFee() + soldItems.get(i).getFinalValueFee());
-    }
-   }
-   for(int i=0; i<soldItems.size(); i++){
-    if((soldItems.get(i).getStartDate().getDate().getYear()) == year)
-     foutput.println("    " + soldItems.get(i));
-   }
-   foutput.println("Total revenue for both auction and fixed items sold in year " + year + ": " + num + "\n");
+  //if Auction Item
+  if(type.toUpperCase().equals(AUCTION)){
+	  foutput.println("---------Auction type Revenue---------");
+	  for(int i=0;i<soldItems.size();i++){
+		  if(soldItems.get(i).getStartDate().getDate().getYear()==year && soldItems.get(i).getType().toUpperCase().equals(AUCTION)){
+			  foutput.println("--------Revenue-------");
+			  //Format the output
+			  foutput.println(soldItems.get(i));
+			  dInsertion=soldItems.get(i).getInsertionFee();
+			  dCostCollected=soldItems.get(i).getCostCollected();
+			  String sInsertion = dollars.format(dInsertion);
+			  String sCostCollected=dollars.format(dCostCollected);
+			  //Print Output
+			  foutput.println("Insertion Fee "+sInsertion+ " totalCost "+sCostCollected);			  
+			  revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+			  String num = dollars.format(revenue);
+			  foutput.println("Revenue: "+num); 
+		  }
+	  }
   }
   
-  foutput.println("\n\n");
+  if(type.toUpperCase().equals(BOTH_ITEM)){
+	  foutput.println("---------BOTH type Revenue---------");
+	  for(int i=0;i<soldItems.size();i++){
+		  if(soldItems.get(i).getStartDate().getDate().getYear()==year && soldItems.get(i).getType().toUpperCase().equals(BOTH_ITEM)){
+			  foutput.println("soldItems "+soldItems.get(i));
+			  
+			  foutput.println("--------Revenue-------");
+			  //Format the output
+			  foutput.println(soldItems.get(i));
+			  dInsertion=soldItems.get(i).getInsertionFee();
+			  dCostCollected=soldItems.get(i).getCostCollected();
+			  String sInsertion = dollars.format(dInsertion);
+			  String sCostCollected=dollars.format(dCostCollected);
+			  //Print Output
+			  foutput.println("Insertion Fee "+sInsertion+ " totalCost "+sCostCollected);			  
+			  revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+			  String num = dollars.format(revenue);
+			  foutput.println("Revenue: "+num);
+		  }
+	  }
+  }
  }
 /**
   * Gets the items sold by person ID and that year
   *   
   * @param year  the year that items were sold
   * @param sid the seller ID
-  * @param foutput Printwriter to print to file
+  * @param foutput Print writer to print to file
   */
   public void soldItemsBySeller(int year, int sid,PrintWriter foutput){
-   String revDollars = dollars.format(revenue);
+   /*String revDollars = dollars.format(revenue);
    revenue = 0;
   foutput.println("---------------Sellers Details for ID: "+ sid+"---------------");
   foutput.println("-----Items put up for Auction for Year: "+year);
@@ -472,7 +479,7 @@ public void getRevenue(int year, String type,PrintWriter foutput){
       soldItems.get(i).getLastBid().getQuantity() +"\n    Item sold for: " + soldItems.get(i).getFinalValueFee());
    }
   }
-  foutput.println("Total revenue " + sid + ": " + revDollars);
+  foutput.println("Total revenue " + sid + ": " + revDollars);*/
   }
   
 
