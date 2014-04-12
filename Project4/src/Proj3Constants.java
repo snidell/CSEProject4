@@ -49,6 +49,8 @@ public interface Proj3Constants
   double TEN_PERCERNT                    = .10;
       
   double  ZEROD                          = 0.0;
+ 
+  
   
   int     THREEI                         = 3;
   int     FOURI                          = 4;

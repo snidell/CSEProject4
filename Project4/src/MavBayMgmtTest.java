@@ -23,6 +23,12 @@
 import java.io.*;
 import java.util.Scanner;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
+
+
+
 /**
  * @param fileName
  *            as input data filename containing input items with  as item separators
@@ -369,16 +375,34 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
                 myEnt.checkSold();
                 myEnt.getRevenue(bidYear,aType,foutput);
                 
+                
                     break;
             case 19: // generate seller report
                 int sid = Integer.parseInt(chopMenuLine[ONEI]);//sellerID
                 int syear = Integer.parseInt(chopMenuLine[TWOI]);//Year
-                myEnt.soldItemsBySeller(syear,sid,foutput);//TODO
+                foutput.println(myEnt.soldItemsBySeller(syear,sid));
                     break;
             case 0: //process exit
-              myEnt.printItemsSold();
-              System.out.println("Exiting System"); 
-              System.exit(CLEAN_EXIT);
+            	try {
+        		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+        		        if ("Nimbus".equals(info.getName())) {
+        		            UIManager.setLookAndFeel(info.getClassName());
+        		            break;
+        		        }
+        		    }
+        		} catch (Exception e) {
+        		    // If Nimbus is not available, fall back to cross-platform
+        		    try {
+        		        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        		    } catch (Exception ex) {
+        		        // not worth my time
+        		    }
+        		}
+            	
+              MainMenu myMenu= new MainMenu(myEnt); //Start of GUI
+              myEnt.empLength();
+              
+              
                     break;
             default: System.out.printf("unknown command: %s: SKIPPED\n", inputLine);
                     foutput.printf("unknown command: %s: SKIPPED\n", inputLine);

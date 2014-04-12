@@ -42,6 +42,8 @@ public class Date implements DateConstants {
         day = c.get(Calendar.DAY_OF_MONTH);
         year = c.get(Calendar.YEAR);
     }
+    
+   
 
  /**
   * Constructor: Does bounds-checking to ensure object represents a valid

@@ -13,8 +13,8 @@
 public abstract class SalariedEmp extends Person implements Employee{
   
   int id=0;
-  Date hireDate=null;
-  Date releaseDate=null;
+  Date hireDate=null;  
+  Date releaseDate=new Date();
   double basePay=0; 
   
   public SalariedEmp(String firstName,String lastName,Date db,String gender,Date hd, String rd, double base) {

@@ -202,8 +202,12 @@ public class Enterprise implements Proj3Constants, DateConstants{
   */
  public void printItemsSold(){
    System.out.println(" Size of Sold Item: "+soldItems.size());
-   for(int i=0;i<soldItems.size();i++)    
-     System.out.println(soldItems.get(i));
+   for(int i=0;i<soldItems.size();i++){
+	  System.out.println(soldItems.get(i));
+	  System.out.println("QTY SOLD: "+soldItems.get(i).getQtySold()+" Price Sold At: "+soldItems.get(i).getLastBid().getAmount());
+	  System.out.println("Customer Return: "+soldItems.get(i).getCustomerReturn());
+   }
+     
    }
  
  /**
@@ -335,21 +339,19 @@ public void checkSold() {
 			  items.get(i).setCostCollected(.1*items.get(i).getLastBid().getAmount());
 			  items.get(i).setSaleFinal(true);
 			  items.get(i).setQuanity((items.get(i).getQuantity()-items.get(i).getLastBid().getBidQty())); //set QuanityAvail=previousQTY-bidQTY
-			  items.get(i).addQtySold(items.get(i).getLastBid().getBidQty());//update QtySold
-			  items.get(i).setCustomerReturn(items.get(i).getQtySold()*items.get(i).getLastBid().getAmount());//update the customer profit.
+			  items.get(i).addQtySold(items.get(i).getLastBid().getBidQty());//update QtySold			  
+			  items.get(i).setCustomerReturn(items.get(i).getQtySold()*items.get(i).getLastBid().getAmount());//update the customer profit.			  
 			  //move item to sold array
-			  soldItems.add(items.get(i));			  
+			  soldItems.add(items.get(i));
+			  
 		  } 
 	  }
        
 	  }else if(items.get(i).getType().toUpperCase().equals(FIXED1)&& items.get(i).getQtySold()>0 && !items.get(i).getSaleFinal()){
-		  items.get(i).setSaleFinal(true);
-		  soldItems.add(items.get(i));
-	  }
-	  
-    
-   }
-  
+		  items.get(i).setSaleFinal(true);		  	  
+		  soldItems.add(items.get(i));		  
+	  }    
+   }  
  }
  
 /**
@@ -455,31 +457,29 @@ public void getRevenue(int year, String type,PrintWriter foutput){
   * @param sid the seller ID
   * @param foutput Print writer to print to file
   */
-  public void soldItemsBySeller(int year, int sid,PrintWriter foutput){
-   /*String revDollars = dollars.format(revenue);
+  public String soldItemsBySeller(int year, int sid){
+   String revDollars = dollars.format(revenue);
    revenue = 0;
-  foutput.println("---------------Sellers Details for ID: "+ sid+"---------------");
-  foutput.println("-----Items put up for Auction for Year: "+year);
-  for(int i=0; i<items.size(); i++) {
-   if(items.get(i).getSellerID() == sid)
-    if(items.get(i).getStartDate().getDate().getYear() == year)
-     foutput.println(items.get(i));
-  }
-  for(int i=0; i<soldItems.size(); i++) {
-   if(soldItems.get(i).getSellerID() == sid)
-    if(soldItems.get(i).getStartDate().getDate().getYear() == year)
-     foutput.println(soldItems.get(i));
-  }
-  foutput.println("------Items sold in Auction for Year: "+year);
-  for(int i=0; i<soldItems.size(); i++) {
-   if(soldItems.get(i).getSellerID() == sid) 
-    if(soldItems.get(i).getStartDate().getDate().getYear() == year) {
-     revenue += soldItems.get(i).getFinalValueFee();     
-     foutput.println(soldItems.get(i) + "\n   Qty sold: " + 
-      soldItems.get(i).getLastBid().getQuantity() +"\n    Item sold for: " + soldItems.get(i).getFinalValueFee());
+   String returnString="";
+   //Loop through items currently not sold
+   returnString+="-------Items Not Sold by SellerID: "+sid+"--------\n";
+   for(int i=0;i<items.size();i++){
+	   //if it matches seller ID print it
+	   if(sid==items.get(i).getSellerID()){
+		   returnString+=items.get(i)+"\n";
+	   }
    }
-  }
-  foutput.println("Total revenue " + sid + ": " + revDollars);*/
+   //now find the items that were sold by that Seller
+   returnString+="-------Items Sold by SellerID: "+sid+"--------\n";
+   for(int i=0;i<soldItems.size();i++){
+	   if(sid==soldItems.get(i).getSellerID()){
+		   returnString+=soldItems.get(i)+"\n";
+		   //add each items customer return to revenue for total
+		   revenue+= soldItems.get(i).getCustomerReturn(); 
+	   }	   
+   }   
+   returnString+="Revenue for ID: "+sid+" "+revDollars+"\n";
+   return returnString;
   }
   
 
@@ -514,7 +514,7 @@ public void getRevenue(int year, String type,PrintWriter foutput){
   }
  
   /**
-  * Prints a submenu for items
+  * Prints a sub menu for items
   * 
   */
   public void itemsMenu(){
@@ -661,6 +661,103 @@ public void getRevenue(int year, String type,PrintWriter foutput){
     
     return "Enterprise: "+name+"Employees: "+numEmployees;     
   } 
+  
+  
+  
+  
+ /*****************Added for GUI interaction**********************/
+  /**
+   * 
+   * 
+   * 
+   * @return String[] of Emp ID First and Last Name of employee by index
+   */
+  public String [] empList(ArrayList<SalariedEmp> emp){
+	  String temp="";
+	  String[] stringedEmpList= new String[emp.size()];
+	  for(int i=0;i<stringedEmpList.length;i++){
+		  temp= Integer.toString(emp.get(i).getID())+"    "+emp.get(i).firstName+" "+emp.get(i).lastName;
+		  stringedEmpList[i]=temp;
+	  }	  
+	  return stringedEmpList;
+  }
+  
+  /**   
+   * 
+   * @return String representation of most tenure employees
+   */
+  public String empLength(){
+	  String temp="";
+	  int lengthOfService=-1;
+	  
+	  for(int i=0;i<employees.size();i++){
+		  //Get the greatest length of service
+		  if(employees.get(i).lengthOfService()>lengthOfService){
+			  lengthOfService=employees.get(i).lengthOfService();
+		  }
+	  }
+	  for(int i=0;i<employees.size();i++){
+		  if(employees.get(i).lengthOfService()==lengthOfService){
+			  temp+= "ID: "+employees.get(i).getID()+" "+employees.get(i).firstName+" "
+		  +employees.get(i).lastName+" Years Served "+employees.get(i).lengthOfService()+ "\n";
+		  }
+	  }
+	  System.out.println("Employees: \n"+temp);
+	  return temp;
+  }
+  
+  /**
+   * 
+   * @return returns current employed employees
+   */
+  public ArrayList<SalariedEmp> getEmployees(){
+	  return employees;
+  }
+  
+  /**
+   * 
+   * @return returns released employed employees
+   */
+  public ArrayList<SalariedEmp> getPastEmployees(){
+	  return releasedEmployees;
+  }
+ 
+  
+  /**
+   * 
+   * 
+   * @param index   index of the employee in the current Employees
+   * @return string  the String value of that employee.
+   * 
+   */  
+  public String sEmpInfo(int index){
+	  
+	  return this.employees.get(index).toString();
+  }
+  
+  /**
+   * 
+   * 
+   * @param index   index of the employee in the current Employees
+   * @return string  the String value of that employee.
+   * 
+   */  
+  public String sRelEmpInfo(int index){
+	  
+	  return this.releasedEmployees.get(index).toString();
+  }
+  
+  /**
+   * 
+   * 
+   * 
+   * @param String year to be calculated
+   */
+  public String sYearRevenue(String yr){
+	  String temp="";
+	  
+	  return temp;
+  }
   
  public static void main(String [] args){
 

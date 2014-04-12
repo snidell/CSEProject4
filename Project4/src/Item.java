@@ -448,7 +448,7 @@ public class Item implements Proj3Constants,DateConstants{
 	  return false;	    	  
 	} 
 	  this.qty-=b.getBidQty();//because it is a valid item remove qty immediately
-	  this.qtySold=b.getBidQty(); //add to sold itemsQty
+	  this.qtySold+=b.getBidQty(); //add to sold itemsQty
 	  //Calculate cost collected if bid is valid item is sold immediately
 	  costCollected+= (.1*b.getBidAmount());
 	  customerReturn+= (b.getBidQty()*b.getBidAmount());//update customer revenue
@@ -592,7 +592,7 @@ public class Item implements Proj3Constants,DateConstants{
   
   public void setCostCollected(double nCost){
 	  
-	  this.costCollected+=nCost;
+	  this.costCollected=nCost;
   }
   
   public boolean getSaleFinal(){  
@@ -616,8 +616,16 @@ public void setSaleFinal(Boolean saleFinal) {
   */
 public void setCustomerReturn(double cr){
 	
-	customerReturn+= cr;
+	customerReturn= cr;
 }
+/** * 
+ * 
+ * @return customers revenue
+ */
+public double getCustomerReturn(){
+	return customerReturn;
+}
+
   public String toString(){
     
     return "SellerID "+this.sellerID+"{ID: "+this.itemID+"| Name: "+this.name+"| Description: "+this.description+"| QTY: "
