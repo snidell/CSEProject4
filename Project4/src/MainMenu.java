@@ -30,7 +30,8 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
     JScrollPane empScroll= new JScrollPane(employeeList);
     JTextArea empTA;
     JComboBox yearCombo;
-    
+    JFrame empFrame= new JFrame();
+    JFrame mainFrame= new JFrame();
  
 	MainMenu(Enterprise ent){
 		this.myEnt=ent; 
@@ -42,12 +43,12 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	}
 	
 	public void loadMainWindow(){
-		JFrame myFrame = new JFrame();    
-	    myFrame.setTitle("Mav Bay Auctionhouse");
-	    myFrame.setSize(600,600);//making the size of the window
-	    myFrame.setLocation(300,300);//window placed at 100 pixel x 100 pixel
-	    myFrame.setVisible(true);//make the window visable
-	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame = new JFrame();    
+		mainFrame.setTitle("Mav Bay Auctionhouse");
+		mainFrame.setSize(600,600);//making the size of the window
+		mainFrame.setLocation(300,300);//window placed at 100 pixel x 100 pixel
+		mainFrame.setVisible(true);//make the window visable
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       
 	    JPanel panel1 = new JPanel();
 	    panel1.setLayout(new GridBagLayout());//creating a grid layout for panel one
@@ -101,9 +102,11 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	    button = new JButton("Get Revenue");
 	    button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String myString= (String)yearCombo.getSelectedItem();
-                System.out.println("String! "+myString);
-                empTA.append("MyString!"+myString);
+            	empTA.setText("");
+            	String myString= (String)yearCombo.getSelectedItem();
+            	System.out.println(myString);
+            	System.out.println(myString.equals("All"));
+                empTA.append(myEnt.sYearRevenue(myString));
             }
         });
 	    button.setBackground(new Color(47,92,180));
@@ -230,15 +233,15 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	    customerButton.addActionListener(this);
 	    panel3.add(customerButton);
 	     
-	    myFrame.add(panel1,BorderLayout.CENTER);//add first panel to the screen
+	    mainFrame.add(panel1,BorderLayout.CENTER);//add first panel to the screen
 	     
 	    lockedLabel = new JLabel("Main Menu");
 	     
 	    lockedLabel.setForeground(Color.RED);
 	    lockedLabel.setBackground(Color.BLACK);
 	    panel2.add(lockedLabel);
-	    myFrame.add(panel2,BorderLayout.NORTH);//add second panel to the screen
-	    myFrame.add(panel3,BorderLayout.SOUTH);
+	    mainFrame.add(panel2,BorderLayout.NORTH);//add second panel to the screen
+	    mainFrame.add(panel3,BorderLayout.SOUTH);
 	}
 	
 	/**
@@ -250,12 +253,12 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	 */
 	public void loadEmployeeWindow(){
 		
-		JFrame myFrame = new JFrame();    
-	    myFrame.setTitle("Mav Bay Auctionhouse");
-	    myFrame.setSize(600,600);//making the size of the window
-	    myFrame.setLocation(300,300);//window placed at 100 pixel x 100 pixel
-	    myFrame.setVisible(true);//make the window visable
-	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		empFrame = new JFrame();    
+		empFrame.setTitle("Mav Bay Auctionhouse");
+		empFrame.setSize(600,600);//making the size of the window
+		empFrame.setLocation(300,300);//window placed at 100 pixel x 100 pixel
+		empFrame.setVisible(true);//make the window visable
+		empFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       
 	    JPanel panel1 = new JPanel();
 	    panel1.setLayout(new GridBagLayout());//creating a grid layout for panel one
@@ -435,15 +438,15 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	    customerButton.addActionListener(this);
 	    panel3.add(customerButton);
 	     
-	    myFrame.add(panel1,BorderLayout.CENTER);//add first panel to the screen
+	    empFrame.add(panel1,BorderLayout.CENTER);//add first panel to the screen
 	     
 	    lockedLabel = new JLabel("Employee Menu");
 	     
 	    lockedLabel.setForeground(Color.RED);
 	    lockedLabel.setBackground(Color.BLACK);
 	    panel2.add(lockedLabel);
-	    myFrame.add(panel2,BorderLayout.NORTH);//add second panel to the screen
-	    myFrame.add(panel3,BorderLayout.SOUTH);
+	    empFrame.add(panel2,BorderLayout.NORTH);//add second panel to the screen
+	    empFrame.add(panel3,BorderLayout.SOUTH);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -484,6 +487,11 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 	    
 	    if(command.equals("Main")){	    	
 	    	this.loadMainWindow();
+	    	this.empFrame.setVisible(false);
+	    }
+	    if(command.equals("Employee")){
+	    	this.loadEmployeeWindow();
+	    	this.mainFrame.setVisible(false);
 	    }
 	    
 	  }//end of action performed

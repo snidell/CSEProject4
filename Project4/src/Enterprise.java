@@ -753,12 +753,58 @@ public void getRevenue(int year, String type,PrintWriter foutput){
    * 
    * @param String year to be calculated
    */
-  public String sYearRevenue(String yr){
+  public String sYearRevenue(String year){
 	  String temp="";
+	  revenue = 0;
+	  String syear="";
+	  double dInsertion=0.00;
+	  double dCostCollected=0.00;
+	  temp+="--------Revenue-------\n";
+	  if(year.equals("All")){
+		  for(int i=0;i<soldItems.size();i++){		  
+			//If the year is valid print that item.
+			 syear=Integer.toString(soldItems.get(i).getStartDate().getDate().getYear());  
+			//Format the output
+			temp+=soldItems.get(i)+"\n";
+			dInsertion=soldItems.get(i).getInsertionFee();
+			dCostCollected=soldItems.get(i).getCostCollected();
+			String sInsertion = dollars.format(dInsertion);
+			String sCostCollected=dollars.format(dCostCollected);
+			//Print Output
+			temp+="Insertion Fee "+sInsertion+ " totalCost "+sCostCollected+"\n";			  
+			revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+				
+		  }
+		  String num = dollars.format(revenue);
+		  temp+="\nRevenue: "+num;
+		  return temp;
+	  }
 	  
+	  
+	  for(int i=0;i<soldItems.size();i++){		  
+		  //If the year is valid print that item.
+		  syear=Integer.toString(soldItems.get(i).getStartDate().getDate().getYear());
+		  if(syear.equals(year)){			  
+			  
+			  //Format the output
+			  temp+=soldItems.get(i)+"\n";
+			  dInsertion=soldItems.get(i).getInsertionFee();
+			  dCostCollected=soldItems.get(i).getCostCollected();
+			  String sInsertion = dollars.format(dInsertion);
+			  String sCostCollected=dollars.format(dCostCollected);
+			  //Print Output
+			  temp+="Insertion Fee "+sInsertion+ " totalCost "+sCostCollected+"\n";			  
+			  revenue+= soldItems.get(i).getInsertionFee()+soldItems.get(i).getCostCollected();
+			  
+			  
+		  }
+	  }
+	  String num = dollars.format(revenue);
+	  temp+="\nRevenue: "+num;
 	  return temp;
   }
   
+
  public static void main(String [] args){
 
    /***************Create EMPLOYEES***************/ 

@@ -496,15 +496,43 @@ ItemID: 401|Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ A
 ---------Auction type Revenue---------
 --------Revenue-------
 SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
-Insertion Fee $3.00 totalCost $70.00
-Revenue: $73.00
+Insertion Fee $3.00 totalCost $67.00
+Revenue: $70.00
 18!both!2012
 ---------BOTH type Revenue---------
 19!11!2013
+-------Items Not Sold by SellerID: 11--------
+-------Items Sold by SellerID: 11--------
+Revenue for ID: 11 $0.00
+
 19!1!2013
+-------Items Not Sold by SellerID: 1--------
+SellerID 1{ID: 100| Name: Camera| Description: Canon EOS Rebel T3I 600D Body+4 Lens Kit 18-55 IS +75-300 +24GB Flash & More| QTY: 1|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2013],[21:49:0:0]
+SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
+SellerID 1{ID: 400| Name: Camera| Description: Canon EOS Rebel T3I 600D Body +75-300 +24GB Flash & More| QTY: 6|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2014],[21:49:0:0]
+SellerID 1{ID: 401| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2014],[10:30:0:0]
+-------Items Sold by SellerID: 1--------
+SellerID 1{ID: 100| Name: Camera| Description: Canon EOS Rebel T3I 600D Body+4 Lens Kit 18-55 IS +75-300 +24GB Flash & More| QTY: 1|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2013],[21:49:0:0]
+SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
+SellerID 1{ID: 400| Name: Camera| Description: Canon EOS Rebel T3I 600D Body +75-300 +24GB Flash & More| QTY: 6|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2014],[21:49:0:0]
+SellerID 1{ID: 401| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2014],[10:30:0:0]
+Revenue for ID: 1 $0.00
+
 19!9!2013
+-------Items Not Sold by SellerID: 9--------
+-------Items Sold by SellerID: 9--------
+Revenue for ID: 9 $8,879.80
+
 19!2!2013
+-------Items Not Sold by SellerID: 2--------
+-------Items Sold by SellerID: 2--------
+Revenue for ID: 2 $0.00
+
 19!10!2013
+-------Items Not Sold by SellerID: 10--------
+-------Items Sold by SellerID: 10--------
+Revenue for ID: 10 $0.00
+
 14!102!5!2-12-2013,00:00:00!110.00!1
 ItemID: 102|Description: Panasonic LUMIX DMC-ZS25 / DMC-TZ35 16.1 MP 20x Optical Zoom Digital Camera
    CurrentBids:
@@ -617,8 +645,8 @@ Revenue: $248.94
 ---------Auction type Revenue---------
 --------Revenue-------
 SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
-Insertion Fee $3.00 totalCost $70.00
-Revenue: $73.00
+Insertion Fee $3.00 totalCost $67.00
+Revenue: $70.00
 18!BoTh!2013
 ---------BOTH type Revenue---------
 14!202!9!2-9-2013,23:01:00!30.00!5
@@ -805,24 +833,24 @@ Revenue: $257.94
 ---------Auction type Revenue---------
 --------Revenue-------
 SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
-Insertion Fee $3.00 totalCost $70.00
-Revenue: $73.00
+Insertion Fee $3.00 totalCost $67.00
+Revenue: $70.00
 --------Revenue-------
 SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
-Insertion Fee $0.10 totalCost $11.00
-Revenue: $84.10
+Insertion Fee $0.10 totalCost $10.90
+Revenue: $81.00
 18!BoTh!2013
 ---------BOTH type Revenue---------
 soldItems SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
 --------Revenue-------
 SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
-Insertion Fee $0.25 totalCost $28.59
-Revenue: $28.84
+Insertion Fee $0.25 totalCost $9.44
+Revenue: $9.70
 soldItems SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
 --------Revenue-------
 SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
-Insertion Fee $0.10 totalCost $22.60
-Revenue: $51.54
+Insertion Fee $0.10 totalCost $7.50
+Revenue: $17.30
 14!502!9!2-9-2014,23:01:00!130.00!5
 ItemID: 502|Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch
    CurrentBids:
@@ -980,17 +1008,232 @@ Revenue: $161.20
 ---------Auction type Revenue---------
 --------Revenue-------
 SellerID 1{ID: 401| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2014],[10:30:0:0]
-Insertion Fee $3.00 totalCost $68.00
-Revenue: $71.00
+Insertion Fee $3.00 totalCost $65.00
+Revenue: $68.00
 --------Revenue-------
 SellerID 7{ID: 601| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 3|Condition: NEW Auction TYPE: AUCTION|Min Start: 20.0|Seller Feedback: 1000|StartDate: [2-11-2014],[12:0:0:0]
-Insertion Fee $0.20 totalCost $12.00
-Revenue: $83.20
+Insertion Fee $0.20 totalCost $11.80
+Revenue: $80.00
 18!BoTh!2014
 ---------BOTH type Revenue---------
 soldItems SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
 --------Revenue-------
 SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
-Insertion Fee $1.00 totalCost $20.00
-Revenue: $21.00
-soldItems SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph B
+Insertion Fee $1.00 totalCost $19.00
+Revenue: $20.00
+soldItems SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+--------Revenue-------
+SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+Insertion Fee $1.25 totalCost $19.44
+Revenue: $40.70
+soldItems SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+--------Revenue-------
+SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+Insertion Fee $0.50 totalCost $11.50
+Revenue: $52.70
+19!21!2013
+-------Items Not Sold by SellerID: 21--------
+-------Items Sold by SellerID: 21--------
+Revenue for ID: 21 $52.70
+
+19!1!2013
+-------Items Not Sold by SellerID: 1--------
+SellerID 1{ID: 100| Name: Camera| Description: Canon EOS Rebel T3I 600D Body+4 Lens Kit 18-55 IS +75-300 +24GB Flash & More| QTY: 1|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2013],[21:49:0:0]
+SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
+SellerID 1{ID: 400| Name: Camera| Description: Canon EOS Rebel T3I 600D Body +75-300 +24GB Flash & More| QTY: 6|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2014],[21:49:0:0]
+SellerID 1{ID: 401| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2014],[10:30:0:0]
+-------Items Sold by SellerID: 1--------
+SellerID 1{ID: 100| Name: Camera| Description: Canon EOS Rebel T3I 600D Body+4 Lens Kit 18-55 IS +75-300 +24GB Flash & More| QTY: 1|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2013],[21:49:0:0]
+SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
+SellerID 1{ID: 400| Name: Camera| Description: Canon EOS Rebel T3I 600D Body +75-300 +24GB Flash & More| QTY: 6|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2014],[21:49:0:0]
+SellerID 1{ID: 401| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2014],[10:30:0:0]
+Revenue for ID: 1 $0.00
+
+19!2!2013
+-------Items Not Sold by SellerID: 2--------
+-------Items Sold by SellerID: 2--------
+Revenue for ID: 2 $8,879.80
+
+19!2!2013
+-------Items Not Sold by SellerID: 2--------
+-------Items Sold by SellerID: 2--------
+Revenue for ID: 2 $0.00
+
+19!4!2013
+-------Items Not Sold by SellerID: 4--------
+SellerID 4{ID: 102| Name: camera| Description: Panasonic LUMIX DMC-ZS25 / DMC-TZ35 16.1 MP 20x Optical Zoom Digital Camera| QTY: 5|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2013],[10:0:0:0]
+SellerID 4{ID: 200| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Stainless Steel Chronograph Dive Watch| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2013],[9:30:0:0]
+SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
+SellerID 4{ID: 500| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Chronograph Dive Watch| QTY: 2|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2014],[9:30:0:0]
+-------Items Sold by SellerID: 4--------
+SellerID 4{ID: 200| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Stainless Steel Chronograph Dive Watch| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2013],[9:30:0:0]
+SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
+Revenue for ID: 4 $0.00
+
+19!5!2013
+-------Items Not Sold by SellerID: 5--------
+-------Items Sold by SellerID: 5--------
+Revenue for ID: 5 $869.55
+
+19!6!2013
+-------Items Not Sold by SellerID: 6--------
+SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
+SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+-------Items Sold by SellerID: 6--------
+SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
+SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+Revenue for ID: 6 $0.00
+
+19!7!2013
+-------Items Not Sold by SellerID: 7--------
+SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
+SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
+SellerID 7{ID: 302| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2013],[12:0:0:0]
+SellerID 7{ID: 303| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 2|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 6000|StartDate: [2-16-2013],[11:0:0:0]
+SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+SellerID 7{ID: 601| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 3|Condition: NEW Auction TYPE: AUCTION|Min Start: 20.0|Seller Feedback: 1000|StartDate: [2-11-2014],[12:0:0:0]
+SellerID 7{ID: 602| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2014],[12:0:0:0]
+-------Items Sold by SellerID: 7--------
+SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
+SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
+SellerID 7{ID: 302| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2013],[12:0:0:0]
+SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+SellerID 7{ID: 601| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 3|Condition: NEW Auction TYPE: AUCTION|Min Start: 20.0|Seller Feedback: 1000|StartDate: [2-11-2014],[12:0:0:0]
+SellerID 7{ID: 602| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2014],[12:0:0:0]
+Revenue for ID: 7 $577.80
+
+19!8!2013
+-------Items Not Sold by SellerID: 8--------
+-------Items Sold by SellerID: 8--------
+Revenue for ID: 8 $1,044.96
+
+19!9!2013
+-------Items Not Sold by SellerID: 9--------
+-------Items Sold by SellerID: 9--------
+Revenue for ID: 9 $0.00
+
+19!10!2013
+-------Items Not Sold by SellerID: 10--------
+-------Items Sold by SellerID: 10--------
+Revenue for ID: 10 $0.00
+
+16!1!12!31
+-----Calculating Salary
+    ID: 1|Emp Type: Web Designer| First Name: katy Last dough|Gender: FEMALE Month: 31Monthly Salary: $1,900.00
+16!2!2!22
+-----Calculating Salary
+    ID: 2|Emp Type: Accountant | First Name: sara Last Longbottom|Gender: MALE Month: 22Monthly Salary: $1,000.00
+16!3!6!3
+-----Calculating Salary
+    ID: 3|Emp Type: Web Designer| First Name: john Last smith|Gender: MALE Month: 3Monthly Salary: $1,576.00
+16!4!12!6000
+-----Calculating Salary
+    ID: 4|Emp Type: CSupport | First Name: james Last bond|Gender: MALE Month: 6000Monthly Salary: $1,040.00
+16!6!5!19
+-----Calculating Salary
+    ID: 6|Emp Type: Accountant | First Name: dave Last richardson|Gender: MALE Month: 19Monthly Salary: $1,400.00
+16!7!1!10000
+-----Calculating Salary
+    ID: 7|Emp Type: CSupport | First Name: Julia Last Roberts|Gender: FEMALE Month: 10000Monthly Salary: $1,720.00
+18!*!2013
+---------ALL type Revenue---------
+--------Revenue-------
+SellerID 1{ID: 100| Name: Camera| Description: Canon EOS Rebel T3I 600D Body+4 Lens Kit 18-55 IS +75-300 +24GB Flash & More| QTY: 1|Condition: NEW Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 9000|StartDate: [2-9-2013],[21:49:0:0]
+Insertion Fee $0.00 totalCost $218.98
+Revenue: $218.98
+--------Revenue-------
+SellerID 1{ID: 101| Name: camera| Description: Nikon D5100 16.2 MP Digital SLR Camera - Black Kit w/ AF-S VR 18-55mm| QTY: 7|Condition: USED Auction TYPE: AUCTION|Min Start: 300.0|Seller Feedback: 9000|StartDate: [2-10-2013],[10:30:0:0]
+Insertion Fee $3.00 totalCost $67.00
+Revenue: $288.98
+--------Revenue-------
+SellerID 4{ID: 200| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Stainless Steel Chronograph Dive Watch| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2013],[9:30:0:0]
+Insertion Fee $0.00 totalCost $29.96
+Revenue: $318.94
+--------Revenue-------
+SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
+Insertion Fee $0.25 totalCost $9.44
+Revenue: $328.64
+--------Revenue-------
+SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
+Insertion Fee $0.10 totalCost $7.50
+Revenue: $336.24
+--------Revenue-------
+SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
+Insertion Fee $0.10 totalCost $10.90
+Revenue: $347.24
+--------Revenue-------
+SellerID 7{ID: 302| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2013],[12:0:0:0]
+Insertion Fee $0.00 totalCost $9.00
+Revenue: $356.24
+17!0
+Web Designer->katy dough Birthdate: [7-1-1982] Gender:FEMALE ID: 1 HireDate: [11-9-2006] Release Date: null basePay: 1000.0 Age: 31 Length of Service 7
+Accountant->sara Longbottom Birthdate: [11-13-1980] Gender:MALE ID: 2 HireDate: [1-2-2010] Release Date: null basePay: 800.0 Age: 33 Length of Service 4
+Web Designer->john smith Birthdate: [4-1-1978] Gender:MALE ID: 3 HireDate: [4-7-2007] Release Date: null basePay: 1000.0 Age: 36 Length of Service 7
+Customer Support->james bond Birthdate: [12-10-1976] Gender:MALE ID: 4 HireDate: [2-20-2005] Release Date: null basePay: 800.0 Age: 37 Length of Service 9
+Accountant->dave richardson Birthdate: [4-15-1964] Gender:MALE ID: 6 HireDate: [11-12-2005] Release Date: null basePay: 1000.0 Age: 50 Length of Service 8
+Customer Support->Julia Roberts Birthdate: [8-13-1970] Gender:FEMALE ID: 7 HireDate: [10-24-2000] Release Date: null basePay: 1699.0 Age: 43 Length of Service 13
+15!1!4-30-2014
+
+
+-----Employees currently employed
+Accountant->sara Longbottom Birthdate: [11-13-1980] Gender:MALE ID: 2 HireDate: [1-2-2010] Release Date: null basePay: 800.0
+Web Designer->john smith Birthdate: [4-1-1978] Gender:MALE ID: 3 HireDate: [4-7-2007] Release Date: null basePay: 1000.0
+Customer Support->james bond Birthdate: [12-10-1976] Gender:MALE ID: 4 HireDate: [2-20-2005] Release Date: null basePay: 800.0
+Accountant->dave richardson Birthdate: [4-15-1964] Gender:MALE ID: 6 HireDate: [11-12-2005] Release Date: null basePay: 1000.0
+Customer Support->Julia Roberts Birthdate: [8-13-1970] Gender:FEMALE ID: 7 HireDate: [10-24-2000] Release Date: null basePay: 1699.0
+
+
+----Employees who have been terminated
+Customer Support->anne haathaway Birthdate: [8-13-1984] Gender:FEMALE ID: 5 HireDate: [10-24-2006] Release Date: [4-23-2014] basePay: 2000.0
+Web Designer->katy dough Birthdate: [7-1-1982] Gender:FEMALE ID: 1 HireDate: [11-9-2006] Release Date: [4-30-2014] basePay: 1000.0
+19!2!2014
+-------Items Not Sold by SellerID: 2--------
+-------Items Sold by SellerID: 2--------
+Revenue for ID: 2 $356.24
+
+19!4!2014
+-------Items Not Sold by SellerID: 4--------
+SellerID 4{ID: 102| Name: camera| Description: Panasonic LUMIX DMC-ZS25 / DMC-TZ35 16.1 MP 20x Optical Zoom Digital Camera| QTY: 5|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2013],[10:0:0:0]
+SellerID 4{ID: 200| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Stainless Steel Chronograph Dive Watch| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2013],[9:30:0:0]
+SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
+SellerID 4{ID: 500| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Chronograph Dive Watch| QTY: 2|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2014],[9:30:0:0]
+-------Items Sold by SellerID: 4--------
+SellerID 4{ID: 200| Name: watch| Description: Invicta 1774 Men's Pro Diver Gold Tone Stainless Steel Chronograph Dive Watch| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 4000|StartDate: [2-14-2013],[9:30:0:0]
+SellerID 4{ID: 402| Name: camera| Description: Panasonic LUMIX DMC FZ 40 16.1 MP 20x Optical Zoom Digital Camera| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 100.0|Seller Feedback: 3000|StartDate: [2-11-2014],[10:0:0:0]
+Revenue for ID: 4 $0.00
+
+19!5!2014
+-------Items Not Sold by SellerID: 5--------
+-------Items Sold by SellerID: 5--------
+Revenue for ID: 5 $869.55
+
+19!6!2014
+-------Items Not Sold by SellerID: 6--------
+SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
+SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+-------Items Sold by SellerID: 6--------
+SellerID 6{ID: 202| Name: watch| Description: Invicta Specialty Chronograph Tachymeter Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 25.45|Seller Feedback: 3000|StartDate: [2-9-2013],[23:0:0:0]
+SellerID 6{ID: 502| Name: watch| Description: Invicta Specialty Chronograph Black Dial Stnls Steel NEW Mens Watch| QTY: 7|Condition: NEW Auction TYPE: BOTH|Min Start: 125.45|Seller Feedback: 3000|StartDate: [2-9-2014],[23:0:0:0]
+Revenue for ID: 6 $0.00
+
+19!7!2014
+-------Items Not Sold by SellerID: 7--------
+SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
+SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
+SellerID 7{ID: 302| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2013],[12:0:0:0]
+SellerID 7{ID: 303| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 2|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 6000|StartDate: [2-16-2013],[11:0:0:0]
+SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+SellerID 7{ID: 601| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 3|Condition: NEW Auction TYPE: AUCTION|Min Start: 20.0|Seller Feedback: 1000|StartDate: [2-11-2014],[12:0:0:0]
+SellerID 7{ID: 602| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2014],[12:0:0:0]
+-------Items Sold by SellerID: 7--------
+SellerID 7{ID: 300| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 2|Condition: NEW Auction TYPE: BOTH|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[0:0:59:0]
+SellerID 7{ID: 301| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 4|Condition: NEW Auction TYPE: AUCTION|Min Start: 10.0|Seller Feedback: 1000|StartDate: [2-11-2013],[12:0:0:0]
+SellerID 7{ID: 302| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2013],[12:0:0:0]
+SellerID 7{ID: 600| Name: shoe| Description: Nike Air Jordan Alpha Mens 12 Basketball Shoes. Blue Black White 392813-103| QTY: 1|Condition: NEW Auction TYPE: BOTH|Min Start: 50.0|Seller Feedback: 1000|StartDate: [2-11-2014],[0:0:59:0]
+SellerID 7{ID: 601| Name: shoe| Description: Reebok Realflex Transition 2 mens athletic running shoes| QTY: 3|Condition: NEW Auction TYPE: AUCTION|Min Start: 20.0|Seller Feedback: 1000|StartDate: [2-11-2014],[12:0:0:0]
+SellerID 7{ID: 602| Name: shoe| Description: Adidas Originals Gazelle Men's Shoes Sneakers Canvas| QTY: 0|Condition: USED Auction TYPE: FIX_PRICE|Min Start: 0.0|Seller Feedback: 6000|StartDate: [2-16-2014],[12:0:0:0]
+Revenue for ID: 7 $577.80
+
+0
+end
+Finished processing all commands. bye!

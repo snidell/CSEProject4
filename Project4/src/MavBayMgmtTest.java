@@ -383,7 +383,7 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
                 foutput.println(myEnt.soldItemsBySeller(syear,sid));
                     break;
             case 0: //process exit
-            	try {
+            	/*try {
         		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
         		        if ("Nimbus".equals(info.getName())) {
         		            UIManager.setLookAndFeel(info.getClassName());
@@ -397,10 +397,11 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
         		    } catch (Exception ex) {
         		        // not worth my time
         		    }
-        		}
+        		}*/
             	
               MainMenu myMenu= new MainMenu(myEnt); //Start of GUI
-              myEnt.empLength();
+             
+              System.out.println(myEnt.sYearRevenue("2013"));
               
               
                     break;
