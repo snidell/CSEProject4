@@ -400,8 +400,8 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
         		}*/
             	
               MainMenu myMenu= new MainMenu(myEnt); //Start of GUI
+              
              
-              System.out.println(myEnt.sYearRevenue("2013"));
               
               
                     break;

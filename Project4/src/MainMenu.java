@@ -34,10 +34,12 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
     JFrame mainFrame= new JFrame();
  
 	MainMenu(Enterprise ent){
-		this.myEnt=ent; 
-		
+		this.myEnt=ent; 	
 		this.loadMainWindow();
 		//this.loadEmployeeWindow();
+		
+		this.mainFrame.validate();
+		this.mainFrame.toFront();
 		
 		
 	}
@@ -186,7 +188,8 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 		c.ipadx=1;
 		c.gridwidth = 1;
 		c.gridheight=8;
-		panel1.add(empTA,c);
+		empScroll= new JScrollPane(empTA);
+		panel1.add(empScroll,c);
 	     
 		JButton b9 = new JButton("9");
 	    b9.setForeground(Color.YELLOW);
@@ -480,7 +483,7 @@ public class MainMenu extends JFrame implements Proj3Constants,DateConstants,Act
 		    System.out.println(myEnt.sRelEmpInfo(index));
 		    empTA.setText("");
 	        empTA.append("------Employee Details-----\n");
-    	    empTA.append(myEnt.sEmpInfo(index));
+    	    empTA.append(myEnt.sRelEmpInfo(index));
 	    }
 	    
 	    
