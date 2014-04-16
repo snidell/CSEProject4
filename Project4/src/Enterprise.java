@@ -23,7 +23,7 @@ public class Enterprise implements Proj3Constants, DateConstants{
  private ArrayList<Item> soldItems=new ArrayList<Item>(); //items sold
  private ArrayList<SalariedEmp> employees= new ArrayList<SalariedEmp>(); //stores employees currently employed
  private ArrayList<SalariedEmp> releasedEmployees = new ArrayList<SalariedEmp>();//stores canned employees
- private ArrayList<Customer> customers; //stores customers of company
+ private ArrayList<Customer> customers= new ArrayList<Customer>(); //stores customers of company
  private NumberFormat dollars= NumberFormat.getCurrencyInstance(Locale.US); //to make money pretty
  private enum SaleType{FIX_PRICE,AUCTION,BOTH};
  private int numEmployees=ZEROI; //current number of employees
@@ -681,6 +681,21 @@ public void getRevenue(int year, String type,PrintWriter foutput){
 	  }	  
 	  return stringedEmpList;
   }
+  /**
+   * 
+   * 
+   * 
+   * @return String[] of Item ID First and Description
+   */
+  public String [] itemList(ArrayList<Item> it){
+	  String temp="";
+	  String[] stringedItemList= new String[it.size()];
+	  for(int i=0;i<stringedItemList.length;i++){
+		  temp= Integer.toString(it.get(i).getItemID())+"    "+it.get(i).getDescription();
+		  stringedItemList[i]=temp;
+	  }	  
+	  return stringedItemList;
+  }
   
   /**   
    * 
@@ -721,6 +736,31 @@ public void getRevenue(int year, String type,PrintWriter foutput){
   public ArrayList<SalariedEmp> getPastEmployees(){
 	  return releasedEmployees;
   }
+  
+  /**
+   * 
+   * @return returns current employed employees
+   */
+  public ArrayList<Customer> getCustomers(){
+	  return customers;
+  }
+  /**
+   * 
+   * 
+   * @return Arraylist of current items not sold yet
+   */
+  public ArrayList<Item> getItems(){
+	  return this.items;
+  }
+  
+  /**
+   * 
+   * 
+   * @return Arraylist of sold items
+   */
+  public ArrayList<Item> getItemsSold(){
+	  return this.soldItems;
+  }
  
   
   /**
@@ -748,9 +788,7 @@ public void getRevenue(int year, String type,PrintWriter foutput){
   }
   
   /**
-   * 
-   * 
-   * 
+   *
    * @param String year to be calculated
    */
   public String sYearRevenue(String year){
@@ -802,6 +840,216 @@ public void getRevenue(int year, String type,PrintWriter foutput){
 	  String num = dollars.format(revenue);
 	  temp+="\nRevenue: "+num;
 	  return temp;
+  }
+  
+  /**
+   * 
+   * 
+   * 
+   * @return String[] of Emp ID First and Last Name of employee by index
+   */
+  public String [] custList(ArrayList<Customer> cust){
+	  String temp="";
+	  String[] stringedEmpList= new String[cust.size()];
+	  for(int i=0;i<stringedEmpList.length;i++){
+		  temp= Integer.toString(cust.get(i).getID())+"    "+cust.get(i).firstName+" "+cust.get(i).lastName;
+		  stringedEmpList[i]=temp;
+	  }	  
+	  return stringedEmpList;
+  }
+  /**
+   * 
+   * @param int index of customer
+   * @param String year of bid
+   * @return String string representation of bids per customer
+   */
+  public String sCustBids(int index, String year){
+	  String temp="";
+	  ArrayList<Bid> tempBid=new ArrayList<Bid>();
+	  String sYear="";
+	  temp+= "-------Bids for Customer for:"+customers.get(index).firstName+" "+customers.get(index).lastName+"\n";
+	  //If all is selected print all bids by UserID
+	  if(year.equals("All")){
+		  for(int i=0;i<items.size();i++){
+			  tempBid=items.get(i).getBids();
+			  for(int j=0;j<tempBid.size();j++){
+				  sYear=Integer.toString(tempBid.get(j).getBidDate().getDate().getYear());
+				   //if the year of the bid and the userID of the bid are equal print it
+				  if(tempBid.get(j).getUserID()==customers.get(index).getID()){
+					temp+= tempBid.get(j)+"\n";  
+				  }
+			  }
+		  } 
+		  return temp;
+	  }
+	  //if not all print by uID and Year
+	  for(int i=0;i<items.size();i++){
+		  tempBid=items.get(i).getBids();
+		  for(int j=0;j<tempBid.size();j++){
+			  sYear=Integer.toString(tempBid.get(j).getBidDate().getDate().getYear());
+			   //if the year of the bid and the userID of the bid are equal print it
+			  if(sYear.equals(year) && tempBid.get(j).getUserID()==customers.get(index).getID()){
+				temp+= tempBid.get(j)+"\n";  
+			  }
+		  }
+	  }
+	  
+	  return temp;
+  }
+  /**
+   * 
+   * @return returns string with max buyer and min buyer
+   */
+  public String sCustMM(){
+	  double topRev=0;//keep track of max Rev
+	  double lowRev=0;//keep track of low rev
+	  double temp=0;//keeps track of current uID revenue
+	  int index=0;//keep track of current minMax index
+	  
+	  
+	  String returnString="";
+	  
+	  for(int i=0;i<customers.size();i++){
+		  for(int j=0;j<soldItems.size();j++){
+			  if(customers.get(i).getID()==soldItems.get(j).getSellerID()){
+				  temp+=soldItems.get(i).getCustomerReturn();
+			  }
+		  }
+		  if(temp>=topRev){
+			  index=i;//store ID
+			  topRev=temp;//store rev of that ID
+		  }
+	  }
+	  String topRevDollars = dollars.format(topRev);
+	  returnString+="----Buyer For All Years\n";
+	  returnString+="---Max Buyer: "+customers.get(index).firstName+" "+customers.get(index).lastName+"---\n";
+	  returnString+="Revenue: "+" "+topRevDollars+"\n";
+	  
+	  //Now calculate lower bounds
+	  lowRev=temp;//reset cost
+	  temp=0;
+	  index=0;//reset index
+	  
+	  for(int i=0;i<customers.size();i++){
+		  for(int j=0;j<soldItems.size();j++){
+			  if(customers.get(i).getID()==soldItems.get(j).getSellerID()){
+				  temp+=soldItems.get(i).getCustomerReturn();
+			  }
+		  }
+		  if(temp<=lowRev){
+			  index=i;//store ID
+			  lowRev=temp;//store rev of that ID
+		  }
+	  }
+	  String lowRevDollars =dollars.format(lowRev);
+	  returnString+="---Min Buyer: "+customers.get(index).firstName+" "+customers.get(index).lastName+"---\n";
+	  returnString+="Revenue: "+" "+lowRevDollars+"\n";
+	  
+	  return returnString;
+  }
+  /**
+   * 
+   * @param year year that needs to be filtered.
+   * @return //if(customers.get(i).getID()==soldItems.get(i).getSellerID()&& soldItems.get(i).getEndDate().toString().equals(year)
+   */
+  public String sCustMM(String year){
+	  double topRev=0;//keep track of max Rev
+	  double lowRev=0;//keep track of low rev
+	  double temp=0;//keeps track of current uID revenue
+	  int index=0;//keep track of current minMax index
+	  String sYear="";
+	  
+	  
+	  String returnString="";
+	  
+	  for(int i=0;i<customers.size();i++){
+		  for(int j=0;j<soldItems.size();j++){
+			  sYear=Integer.toString(soldItems.get(i).getEndDate().getYear());
+			  if(customers.get(i).getID()==soldItems.get(j).getSellerID()&& sYear.equals(year)){
+				  temp+=soldItems.get(i).getCustomerReturn();				  
+			  }
+		  }
+		  
+		  if(temp>=topRev){
+			  index=i;//store ID
+			  topRev=temp;//store rev of that ID
+		  }
+	  }
+	  String topRevDollars = dollars.format(topRev);
+	  returnString+="----Buyer For Year"+year+"\n";
+	  returnString+="---Max Buyer: "+customers.get(index).firstName+" "+customers.get(index).lastName+"---\n";
+	  returnString+="Revenue: "+" "+topRevDollars+"\n";
+	  
+	  //Now calculate lower bounds
+	  lowRev=temp;//reset cost
+	  temp=0;
+	  index=0;//reset index	  
+	  
+	  for(int i=0;i<customers.size();i++){
+		  for(int j=0;j<soldItems.size();j++){
+			  sYear=Integer.toString(soldItems.get(i).getEndDate().getYear());
+			  if(customers.get(i).getID()==soldItems.get(j).getSellerID()&& sYear.equals(year)){
+				  temp+=soldItems.get(i).getCustomerReturn();				  
+			  }
+		  }		  
+		  if(temp<=lowRev){
+			  index=i;//store ID
+			  lowRev=temp;//store rev of that ID
+		  }
+	  }
+	  String lowRevDollars =dollars.format(lowRev);
+	  returnString+="---Min Buyer: "+customers.get(index).firstName+" "+customers.get(index).lastName+"---\n";
+	  returnString+="Revenue: "+" "+lowRevDollars+"\n";
+	  
+	  return returnString;
+  }
+  
+  public String getCustomerName(int sid){
+	  String returnString="";
+	  for(int i=0;i<customers.size();i++){
+		  if(customers.get(i).getID()==sid){
+			  return customers.get(i).firstName+" "+customers.get(i).lastName;
+		  }
+	  }
+	  return returnString;
+  }
+  /**
+   *  
+   * @param index index of the item needed
+   * @return bid info on that bid.
+   */
+  public String sGetItemBids(int index){
+	  ArrayList<Bid> tempBid=new ArrayList<Bid>();
+	  tempBid= items.get(index).getBids();
+	  String returnString="";
+	  returnString+="Customer Who owns this producet: "+this.getCustomerName(items.get(index).getSellerID())+"\n";	  
+	  returnString+="-------Item Details------\n";
+	  returnString+= items.get(index)+"\n";
+	  returnString+= "-------Bids for above item (notSold)---\n";
+	  for(int i=0;i<tempBid.size();i++){
+		  returnString+=tempBid.get(i)+"\n";
+	  }
+	  return returnString;
+  }
+  
+  /**
+   * @param index index of the item needed
+   * @return bid info of item that is sold including revenue
+   */
+  public String sGetSoldItemBids(int index){
+	  ArrayList<Bid> tempBid=new ArrayList<Bid>();
+	  tempBid= soldItems.get(index).getBids();
+	  String returnString="";
+	  returnString+="Customer Who owns this producet: "+this.getCustomerName(soldItems.get(index).getSellerID())+"\n";	  
+	  returnString+="-------Item Details------\n";
+	  returnString+= soldItems.get(index)+"\n";
+	  returnString+= "-------Bids for above item (Sold)---\n";
+	  for(int i=0;i<tempBid.size();i++){
+		  returnString+=tempBid.get(i)+"\n";
+	  }
+	  String dollarCost=dollars.format(soldItems.get(index).getCustomerReturn());
+	  returnString+="Customer Return for Item: "+dollarCost;
+	  return returnString;
   }
   
 

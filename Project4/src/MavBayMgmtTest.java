@@ -383,7 +383,7 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
                 foutput.println(myEnt.soldItemsBySeller(syear,sid));
                     break;
             case 0: //process exit
-            	/*try {
+            	try {
         		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
         		        if ("Nimbus".equals(info.getName())) {
         		            UIManager.setLookAndFeel(info.getClassName());
@@ -395,14 +395,13 @@ public class MavBayMgmtTest implements Proj3Constants, DateConstants {
         		    try {
         		        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         		    } catch (Exception ex) {
-        		        // not worth my time
+        		        
         		    }
-        		}*/
+        		}
             	
               MainMenu myMenu= new MainMenu(myEnt); //Start of GUI
-              
              
-              
+              //System.out.println(myEnt.sGetSoldItemBids(0));
               
                     break;
             default: System.out.printf("unknown command: %s: SKIPPED\n", inputLine);

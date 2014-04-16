@@ -49,7 +49,8 @@ public class Bid implements Proj3Constants,DateConstants{
   }
   
   
-  /**
+  
+/**
   * Getter for itemID
   * 
   * @return int itemIDs
@@ -109,9 +110,21 @@ public class Bid implements Proj3Constants,DateConstants{
     
     return this.bidAmount;
   }
-  
+  /**
+   * Getter for qty amount
+   * 
+   * @return quanity of bid
+   */
   public int getQuantity(){
    return this.bidQTY;
+  }
+  /**
+   * Getter for user ID amount
+   * 
+   * @return int for userID 
+   */
+  public int getUserID(){
+	  return this.userID;
   }
     
   

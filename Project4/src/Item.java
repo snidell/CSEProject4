@@ -625,6 +625,14 @@ public void setCustomerReturn(double cr){
 public double getCustomerReturn(){
 	return customerReturn;
 }
+/**
+ * 
+ * 
+ * @return string rep of the description
+ */
+public String getDescription(){
+	return this.description;
+}
 
   public String toString(){
     
